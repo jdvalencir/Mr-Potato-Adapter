@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mrpotato-adapter
+  labels:
+    app: mrpotato-adapter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mrpotato-adapter
+  template:
+    metadata:
+      labels:
+        app: mrpotato-adapter
+    spec:
+      containers:
+      - name: mrpotato-adapter
+        image: julianv08/mrpotato-adapter:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: "50m"
+            memory: "100Mi"
+          requests:
+            cpu: "50m"
+            memory: "100Mi"

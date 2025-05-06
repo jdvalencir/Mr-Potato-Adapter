@@ -1,0 +1,13 @@
+[2025-05-02T06:25:56.392Z] INFO: Response El ciudadano con id: 1234567890 se encuentra registrado en el operador: Operador Ciudadano 
+[2025-05-02T06:26:22.412Z] INFO: Response El ciudadano con id: 1234567890 se encuentra registrado en el operador: Operador Ciudadano 
+[2025-05-02T07:29:28.776Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:29:28.785Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:34:12.750Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:34:12.756Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:36:08.873Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:36:08.881Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:37:24.470Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:37:24.473Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:38:03.714Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:38:03.716Z] ERROR: Error: Request failed with status code 501
+[2025-05-02T07:43:57.336Z] INFO: Citizen registered successfully.
