@@ -16,6 +16,40 @@ const PORT = process.env.PORT || 3000;
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
+app.get("/v1/adapter/operators", async (req, res) => {
+  const url = `https://govcarpeta-apis-4905ff3c005b.herokuapp.com/apis/getOperators`;
+
+  const headers = {
+    ContentType: "application/json",
+  };
+
+  try {
+    const response = await axios.get(url, { headers });
+
+    if (response.status === 204) {
+      logger.info("No content found for the given ID.");
+      return res
+        .status(204)
+        .json({ message: "No content found for the given ID." });
+    }
+
+    res.status(200).json({
+      status: response.status,
+      operators: response.data,
+    });
+  } catch (error) {
+    logger.error(`Error: ${error.message}`);
+    if (error.response && error.response.status === 501) {
+      return res.status(501).json({
+        status: error.response.status,
+        message: error.response.data,
+      });
+    }
+    logger.error(`Error: ${error.message}`);
+    res.status(500).json({ error: error.response.data });
+  }
+});
+
 app.get("/v1/adapter/validateCitizen/:id", async (req, res) => {
   const id = req.params.id;
   const url = `https://govcarpeta-apis-4905ff3c005b.herokuapp.com/apis/validateCitizen/${id}`;

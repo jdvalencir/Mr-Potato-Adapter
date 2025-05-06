@@ -11,12 +11,21 @@
     "http"
   ],
   "paths": {
-    "/": {
+    "/v1/adapter/operators": {
       "get": {
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "501": {
+            "description": "Not Implemented"
           }
         }
       }
