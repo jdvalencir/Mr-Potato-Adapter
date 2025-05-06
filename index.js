@@ -2,6 +2,9 @@ import express from "express";
 import axios from "axios";
 import cors from "cors";
 import { getLogger } from "./logger/logger.js";
+import swaggerUi from "swagger-ui-express";
+import fs from "fs";
+const swaggerFile = JSON.parse(fs.readFileSync("./swagger/swagger_output.json", "utf8"));
 
 const app = express();
 const logger = getLogger();
@@ -11,9 +14,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.get("/v1/adapter/validateCitizen/:id", async (req, res) => {
   const id = req.params.id;
@@ -90,7 +91,7 @@ app.post("/v1/adapter/registerCitizen", async (req, res) => {
   }
 });
 
-app.delete("/v1/adapter/unregisterCitizen", async (req, res) => {
+app.post("/v1/adapter/unregisterCitizen", async (req, res) => {
   const { id, operatorId, operatorName } = req.body;
   const url = `https://govcarpeta-apis-4905ff3c005b.herokuapp.com/apis/unregisterCitizen`;
 
