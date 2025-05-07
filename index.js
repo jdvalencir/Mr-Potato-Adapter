@@ -9,8 +9,8 @@ const swaggerFile = JSON.parse(fs.readFileSync("./swagger/swagger_output.json", 
 const app = express();
 const logger = getLogger();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
